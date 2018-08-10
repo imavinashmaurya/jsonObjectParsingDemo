@@ -2,6 +2,7 @@ package com.example.avinash.jsonobjectdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.android.volley.Request;
 import com.example.avinash.jsonobjectdemo.api.APIManager;
@@ -48,11 +49,12 @@ public class MainActivity extends AppCompatActivity {
  * {"PID":"id","Product_Quantity":"5","Product_Price":"44","Detail":[{"PID":"id","Product_Quantity":"5","Product_Price":"44"},{"PID":"id","Product_Quantity":"5","Product_Price":"44"},{"PID":"id","Product_Quantity":"5","Product_Price":"44"},{"PID":"id","Product_Quantity":"5","Product_Price":"44"},{"PID":"id","Product_Quantity":"5","Product_Price":"44"}]}
  */
 
-            APIRequest apiRequest = new APIRequest("url", Request.Method.POST, jsonObject, null, this);
+            APIRequest apiRequest = new APIRequest("url", Request.Method.POST, jsonObject, null, MainActivity.this);
             apiRequest.showLoader = false;
             APIManager.request(apiRequest, new APIResponse() {
                 @Override
                 public void onResponse(String response, Exception error, Map<String, String> headers, int statusCode) {
+                    Log.e("response", response);
                     if (response != null && error == null) {
                         try {
                             // response
