@@ -3,6 +3,7 @@ package com.example.avinash.jsonobjectdemo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.example.avinash.jsonobjectdemo.api.APIManager;
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
                     Log.e("response", response);
                     if (response != null && error == null) {
                         try {
+                            TextView textView = findViewById(R.id.tvContent);
+                            textView.setText(response);
                             // response
                         } catch (Exception e) {
                             e.printStackTrace();
